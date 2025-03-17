@@ -48,7 +48,7 @@ function check_root() {
 }
 
 function select_theme() {
-    themes=('Vimix' 'Cyberpunk' 'Shodan' 'fallout' 'CyberRe' 'minegrub-theme' 'Retroboot' 'Quit')
+    themes=('Vimix' 'Cyberpunk' 'Shodan' 'fallout' 'CyberRe' 'minegrub-theme' 'Retroboot' 'Catppuccin-frappe' 'Catppuccin-latte' 'Catppuccin-macchiato' 'Catppuccin-mocha' 'Quit')
 
     PS3=$(echo_prompt '\nChoose The Theme You Want: ')
     select THEME_NAME in "${themes[@]}"; do
@@ -73,6 +73,18 @@ function select_theme() {
                 break;;
             'Retroboot')
                 splash 'Installing Retroboot Theme'
+                break;;
+            'Catppuccin-frappe')
+                splash 'Installing Catppuccin-frappe Theme'
+                break;;
+            'Catppuccin-latte')
+                splash 'Installing Catppuccin-latte Theme'
+                break;;
+            'Catppuccin-macchiato')
+                splash 'Installing Catppuccin-macchiato Theme'
+                break;;    
+            'Catppuccin-mocha')
+                splash 'Installing Catppuccin-mocha Theme'
                 break;;
             'Quit')
                 echo_info 'User requested exit...!'
