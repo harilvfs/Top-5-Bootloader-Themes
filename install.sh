@@ -163,13 +163,14 @@ function update_grub() {
         echo_info 'Updating GRUB...'
         grub-mkconfig -o /boot/grub/grub.cfg
 
-    elif command -v grub2-mkconfig &>/dev/null; then
-        if [[ -d /sys/firmware/efi ]]; then
-            echo_info 'Updating GRUB (Fedora UEFI)...'
-            grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
-        else
-            echo_info 'Updating GRUB (Fedora Legacy BIOS)...'
+    elif [[ -x "$(command -v grub2-mkconfig)" ]]; then
+        if [[ -x "$(command -v zypper)" ]]; then
+            echo_info 'grub2-mkconfig -o /boot/grub2/grub.cfg'
             grub2-mkconfig -o /boot/grub2/grub.cfg
+
+        elif [[ -x "$(command -v dnf)" ]]; then
+            echo_info 'grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg'
+            grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
         fi
     else
         echo_error "GRUB update command not found!"
